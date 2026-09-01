@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sous Pression</title>
+<style>
+  :root{
+    --sky:#BEE3F8;
+    --sky-light:#E4F4FF;
+    --cloud:#FFFFFF;
+    --ink:#1F3A5F;
+    --coral:#FF5A5F;
+    --coral-dark:#E13E44;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI', Arial, sans-serif;
+    background:var(--sky);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:60px 30px 90px;
+  }
+
+  h1,h2,h3{margin:0;}
+
+  /* Bloc titre tout en haut */
+  .page-title{
+    text-align:center;
+    margin-bottom:44px;
+    font-family: "Trebuchet MS", sans-serif;
+  }
+  .page-title h1{
+    font-size:36px;
+    color:var(--ink);
+  }
+
+  .top-row{
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:40px;
+    align-items:start;
+  }
+
+  /* ---- Conteneur nuage : SVG en fond + contenu par-dessus ---- */
+  .cloud{
+    position:relative;
+    width:100%;
+  }
+  .cloud svg{
+    display:block;
+    width:100%;
+    height:auto;
+    filter:drop-shadow(0 12px 14px rgba(31,58,95,.18));
+  }
+  .cloud-inner{
+    position:absolute;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  
+    left: 20px;
+  }
+
+
+
+  /* Nuage haut-gauche : texte */
+  .cloud-text{ aspect-ratio: 320 / 190; }
+  .cloud-text .cloud-inner{
+    top:10%; left:18%; right:18%; bottom:15%;
+    gap:12px;
+    transform: translate(20px, -10px);
+  }
+  .cloud-text h2{ font-size:26px; }
+  .cloud-text p{ margin:0; font-size:15px; line-height:1.5; color:#4C6482; }
+
+  /* Bloc haut-droite : image (pas un nuage, un cadre classique) */
+  .image-slot{
+    min-height:260px;
+    border-radius:24px;
+    background:var(--sky-light);
+    border:2px dashed #8FC3E6;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:#5B7A9A;
+    font-size:14px;
+    padding:20px;
+  }
+
+  /* Grand nuage central : bouton acheter */
+  .cloud-cta{
+    margin:55px auto 0;
+    max-width:560px;
+    aspect-ratio: 340 / 260;
+  }
+  .cloud-cta .cloud-inner{
+    top:15%; left:30%; right:12%; bottom:18%;
+    align-items:center;
+    text-align:center;
+    gap:14px;
+  }
+  .cloud-cta h2{ font-size:24px; }
+  .cloud-cta p{ margin:0; color:#4C6482; font-size:15px; }
+
+  .buy-btn{
+    font-size:18px;
+    font-weight:700;
+    color:#fff;
+    background:var(--coral);
+    border:none;
+    padding:15px 40px;
+    border-radius:50px;
+    cursor:pointer;
+    box-shadow:0 6px 0 var(--coral-dark);
+    transition:transform .1s ease;
+  }
+
+  .buy-btn:hover {
+    transform: translateY(-2px);
+    }
+  .buy-btn:hover{ transform:translateY(-2px); }
+  .buy-btn:active{
+    transform:translateY(4px);
+    box-shadow:0 2px 0 var(--coral-dark);
+  }
+
+h2 {
+    text-align: center;
+}
+.images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.images img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+}
+
+
+
+
+
+
+  /* Bloc du bas : règles du jeu */
+  .rules{
+    margin-top:50px;
+    background:#fff;
+    border-radius:24px;
+    padding:36px 40px;
+    box-shadow:0 10px 24px rgba(0,0,0,.08);
+  }
+  .rules h3{ 
+    font-size:20px; 
+    margin-bottom:16px; 
+    font-weight: 400 !important;
+  }
+
+  .rules ol{
+    margin:0;
+    padding-left:20px;
+    display:grid;
+    gap:10px;
+    font-size:15px;
+    line-height:1.5;
+    color:#3E5876;
+  }
+
+  @media (max-width:720px){
+    .top-row{ grid-template-columns:1fr; }
+  }
+
+
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- Bloc titre tout en haut -->
+  <div class="page-title">
+    <h1>Sous Pression</h1>
+  </div>
+
+  <div class="top-row">
+    <!-- Nuage en haut à gauche : texte -->
+    <div class="cloud cloud-text">
+      <svg viewBox="0 0 320 190" preserveAspectRatio="none">
+        <path fill="#FFFFFF" d="
+          M70,160
+          Q20,160 18,120
+          Q16,88 50,80
+          Q45,40 90,32
+          Q100,0 145,10
+          Q165,-15 205,0
+          Q235,-10 255,20
+          Q295,18 300,55
+          Q320,65 305,90
+          Q315,120 285,128
+          Q285,155 245,150
+          Q235,175 195,162
+          Q170,180 135,163
+          Q105,178 80,160
+          Z"/>
+      </svg>
+      <div class="cloud-inner">
+        <h2>Jeu de cartes</h2>
+        <p>Sous pression est un jeu de cartes sur le thème de la météorologie. 
+          Il est adapté à tous les âges et se joue de deux à neuf joueurs.
+          la règle facultative vous permet de jouer avec ou sans connaissances, et à en apprendre plus, 
+          si vous le souhaitez, sur les phénomènes qui vous entourent au quotidien. 
+        </p>
+      </div>
+    </div>
+
+   
+  <img src="image.png" alt="Mon image" width="250">
+
+
+  </div>
+
+  <!-- Grand nuage central : bouton acheter -->
+  <div class="cloud cloud-cta">
+    <svg viewBox="0 0 340 260" preserveAspectRatio="none">
+      <path fill="#FFFFFF" d="
+        M90,220
+        Q30,220 28,175
+        Q25,140 65,130
+        Q55,85 105,75
+        Q112,35 165,42
+        Q180,5 225,15
+        Q255,-10 285,20
+        Q320,20 322,60
+        Q340,72 322,100
+        Q335,130 305,140
+        Q308,175 265,175
+        Q260,205 210,198
+        Q195,225 150,210
+        Q120,230 90,220
+        Z"/>
+    </svg>
+    <div class="cloud-inner">
+      <h2>Prêt à commencer ?</h2>
+      
+      <button class="buy-btn" id="buy-button">Acheter</button>
+    </div>
+  </div>
+
+  <h2>Quelques cartes<h2>
+
+<div class="images">
+    <img src="imagenoire.png" alt="Image 1">
+    <img src="imagerouge.png" alt="Image 2">
+    <img src="imagebleue.png" alt="Image 3">
+    <img src="imageverte.png" alt="Image 4">
+    <img src="imagejaune.png" alt="Image 5">
+    <img src="imagebeige.png" alt="Image 6">
+</div>
+
+
+
+
+
+
+  <!-- Bloc du bas : règles du jeu -->
+  <div class="rules">
+    <h3>Règles du jeu</h3>
+    <ol>
+      <li>Le but du jeu est de se débarrasser de ses cartes le plus rapidement possible. 
+        7 cartes sont distribuées à chaque joueur et une est posée au milieu pour annoncer la couleur de départ. 
+        Le joueur qui commence peut poser une carte qui se trouve à la même hauteur(altitude) ou dans la hauteur du dessus (la couleur énoncée ET celle du dessus)
+        et doit annoncer le titre de sa carte à haute voix. Chaque joueur joue en respectant l'ordre des couleurs (même hauteur ou hauteur du dessus).
+        Les joueurs ont le droit de poser deux cartes en même temps si elles comportent un symbole commun.
+        Il est également possible de couper le jeu si un joueur à un symbole commun avec la carte qui vient d'être posée, si le symbole se trouve à droite de la carte. 
+        Si un joueur pose la carte "Pression atmosphérique", il fait piocher trois cartes aux personnes de son choix (trois pour l'une ou deux pour l'une, une pour l'autre..)
+        La personne suivante (à côté du joueur ayant distribué les cartes , toujours dans le même sens), choisira la hauteur dans laquelle elle souhaite continuer la partie. 
+        Finalement, si un joueur ne dit pas le nom de sa carte en la posant, il doit piocher une carte. 
+        (Facultatif : les joueurs peuvent, à n'importe quel moment de la partie, taper sur le tas, puis, une carte.  de la pioche leur est lue par un autre joueur et si
+        le joueur devine le nom (le titre) de la carte, il peut se débarrasser de la carte de son choix dans ton tas). 
+      </li>
+      <li>Piocher c'est jouer ! </li>
+      <li>Si une personne coupe le jeu, c'est à elle de rejouer.</li>
+    </ol>
+  </div>
+
+</div>
+
+<script>
+  document.getElementById("buy-button").addEventListener("click", async () => {
+    try {
+      const response = await fetch("/create-checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+
+      const data = await response.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert("Impossible de créer le paiement.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Une erreur est survenue.");
+    }
+  });
+</script>
+
+
+
+
+
+</body>
+</html>
